@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Library Transactions</h2>
+<table border="3">
+    <tr>
+        <th>Student Name</th>
+        <th>Book Name</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+        <th>Actions</th>
+    </tr>
+    {% for transaction in transactions %}
+    <tr>
+        <td>{{ transaction.student.name }}</td>
+        <td>{{ transaction.book.name }}</td>
+        <td>{{ transaction.start_date }}</td>
+        <td>{{ transaction.end_date }}</td>
+        <td>
+            <a href="{% url 'librarytransaction_edit' transaction.id %}">Edit</a>
+            <a href="{% url 'librarytransaction_delete' transaction.id %}">Delete</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+<a href="{% url 'librarytransaction_create' %}">Add Transaction</a>
+{% endblock %}

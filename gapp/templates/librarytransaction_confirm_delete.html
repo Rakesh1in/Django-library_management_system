@@ -1,0 +1,11 @@
+
+{% extends 'base.html' %}
+{% block content %}
+<h2>Delete Transaction</h2>
+<p>Are you sure you want to delete the transaction for "{{ transaction.student.name }}" borrowing "{{ transaction.book.name }}"?</p>
+<form method="post">
+    {% csrf_token %}
+    <button type="submit">Confirm</button>
+    <a href="{% url 'librarytransaction_list' %}">Cancel</a>
+</form>
+{% endblock %}
